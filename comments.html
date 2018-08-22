@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script type = "text/javascript" src = "js/vue.js"></script>
+
+
+	      <link rel="stylesheet" href="css/style.css" >
+	
+	  </head>
+  <body>
+  
+  <div class="main" style="padding:5%">
+  
+  
+    <h3>Comments</h3>
+
+	
+<div id="commentcontainer">
+
+
+<p>Enter a comment and rating to let others know about your experiance.</p>
+
+<form name="sendcomment" action="#" onsubmit="validateAction();return false" method="post">
+
+<input type="text" name="formSubject"> <br>
+<input type="text" name="formComment"> <br>
+<input type="submit" name="submit" value="submit"> 
+
+</form>
+
+</div> 
+
+<script> 
+
+function validateAction()
+
+{
+
+var insertSubject ;
+var subjectBlock ;
+insertSubject = document.createElement( 'h5' ); 
+insertSubject.innerHTML = document.forms["sendcomment"]["formSubject"].value ;
+subjectBlock = document.getElementById( 'commentcontainer' );
+subjectBlock.appendChild( insertSubject );
+
+var insertComment ;
+var commentBlock ;
+insertComment = document.createElement( 'p' ); 
+insertComment.innerHTML = document.forms["sendcomment"]["formComment"].value ;
+commentBlock = document.getElementById( 'commentcontainer' );
+commentBlock.appendChild( insertComment ).style.cssText = 'text-indent: 0px; padding:10px; width:20%; border:1px solid #ddd; border-radius:20px; color:black; background:#F8F8F8;';
+
+}
+
+</script>
+
+
+	</div>
+	
+  </body>
+</html>

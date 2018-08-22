@@ -1,0 +1,29 @@
+body {
+  margin-left: 0%;
+  margin-right: 0%;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  
+  font-family: segoe ui;
+background:  white;
+  }
+
+/* background colour gradients */
+
+  #grad1 {
+    height: 100px;
+    background:  white; /*default if gradient not supported */
+    background: linear-gradient(0deg,   #b3b3b3, black);
+}
+
+ 
+  
+  #grad2 {
+    height: 100px;
+    background:  white; /*default if gradient not supported */
+    background: linear-gradient(0deg,   white,  #f2f2f2);
+}
+
+  
+
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/style.css" >
+
+    <link rel="stylesheet" href="css/login.css" >
+
+	
+	<script>
+
+function ValidateEmail(inputEmail)
+{
+var emailformat = /\S+@\S+\.\S+/;
+if(inputEmail.value.match(emailformat))
+{
+document.emailto.formEmail.focus();
+return true;
+}
+else
+{
+alert("Please enter an email address in the correct format.");
+document.emailto.formEmail.focus();
+return false;
+}
+}
+
+function validateForm() {
+    var nameformat = document.forms["emailto"]["formName"].value;
+    var subjectformat = document.forms["emailto"]["formSubject"].value;
+    var commentsformat = document.forms["emailto"]["formComments"].value;
+
+    if (nameformat == "" || subjectformat == "" || commentsformat == "") {
+        alert("Please enter your details fully.");
+        return false;
+    }
+    
+}
+
+
+</script>
+
+
+</head>
+<body>
+
+<div class="main" style="padding:5%">
+
+      <h1>Contact</h1>
+
+Contact us for questions and comments.
+
+<h5>Address</h5>
+
+2 Somewhere Road<br>
+Manchester<br>
+M12 3AB<br>
+
+<h5>Phone</h5>
+
+0161 123 4567
+
+<h5>Email</h5>
+
+<form name="emailto" action="/action_page.php"
+onsubmit="return ValidateEmail(document.emailto.formEmail) &&  validateForm() " method="post">
+
+
+Name <input type="text" name="formName"><br>
+Subject <input type="text" name="formSubject"><br>
+E-mail <input type='text' name='formEmail'/><br>
+Comments <input type="text" name="formComments"><br>
+<input type="submit" name="submit" value="submit">
+
+</form>
+
+
+</div>
+</body>
+</html>

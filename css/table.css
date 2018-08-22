@@ -1,0 +1,17 @@
+td, th {
+    border: 0px solid  #008000;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(odd) {
+    background-color:   #f2f2f2
+;
+}
+
+tr:nth-child(even) {
+    background-color:  white;
+	color: black;
+	
+	
+	}

@@ -1,0 +1,21 @@
+a:link {
+    color:  #008000;
+}
+
+a:visited {
+    color:  #008000;
+}
+
+a:hover {
+    color:  #008000;
+}
+
+a:active {
+    color:  #008000;
+} 
+
+/* remove underline */
+
+a:link {
+    text-decoration: none;
+}
