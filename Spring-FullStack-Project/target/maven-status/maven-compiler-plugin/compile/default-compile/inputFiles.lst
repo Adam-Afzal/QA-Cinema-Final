@@ -1,0 +1,8 @@
+/home/syed/Documents/qacinema/src/main/java/com/qa/CinemaApplication.java
+/home/syed/Documents/qacinema/src/main/java/com/qa/repository/iSeatRepository.java
+/home/syed/Documents/qacinema/src/main/java/com/qa/domain/Booking.java
+/home/syed/Documents/qacinema/src/main/java/com/qa/repository/iBookingRepository.java
+/home/syed/Documents/qacinema/src/main/java/com/qa/domain/SeatStatus.java
+/home/syed/Documents/qacinema/src/main/java/com/qa/controller/BookingController.java
+/home/syed/Documents/qacinema/src/main/java/com/qa/domain/Seats.java
+/home/syed/Documents/qacinema/src/main/java/com/qa/domain/Screen.java
