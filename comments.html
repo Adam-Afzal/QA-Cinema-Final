@@ -36,22 +36,39 @@ function validateAction()
 
 {
 
-
 var insertSubject ;
 var subjectBlock ;
 insertSubject = document.createElement( 'h5' ); 
 insertSubject.innerHTML = document.forms["sendcomment"]["formSubject"].value ;
-subjectBlock = document.getElementById( 'commentcontainer' );
 subjectBlock.appendChild( insertSubject );
 
 var insertComment ;
 var commentBlock ;
 insertComment = document.createElement( 'p' ); 
 insertComment.innerHTML = document.forms["sendcomment"]["formComment"].value ;
-commentBlock = document.getElementById( 'commentcontainer' );
 commentBlock.appendChild( insertComment ).style.cssText = 'text-indent: 0px; padding:10px; width:20%; border:1px solid #ddd; border-radius:20px; color:black; background:#F8F8F8;';
 
+
+var rating;
+
+if (rating > 10 || rating < 0 ) {
+
+alert("Enter a rating between 0 and 10.");
+return false;
+
 }
+
+else {
+return true;
+
+}
+
+
+
+}
+
+
+
 
 </script>
 
