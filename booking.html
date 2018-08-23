@@ -137,6 +137,23 @@ Name of person booking: <input type="text" name="name" ><br>
         alert("Please enter the name of the person booking.");
         return false;
     }
+	
+	    var movieformat = document.bookto.booking_movie.value;
+
+	    if (movieformat == "Select" ) {
+        alert("Please enter a movie to watch.");
+        return false;
+    }
+	
+		var adultnumber = document.bookto.number_of_adults.value;
+		var childnumber = document.bookto.number_of_children.value;
+
+	    if (adultnumber == 0 || childnumber === 0) {
+        alert("Please enter at least one adult or child.");
+        return false;
+    }
+	
+	
     }
 	
 	    var vm = new Vue({
