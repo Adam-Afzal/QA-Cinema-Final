@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <title>Booking</title>
+      <script type = "text/javascript" src = "js/vue.js"></script>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/style.css" >
+
+    <link rel="stylesheet" href="css/login.css" >
+
+
+</head>
+<body>
+
+<div class="main" style="padding:5%">
+
+      <h1>Booking</h1>
+
+<form name="emailto" id="emailto" action="/action_page.php"
+onsubmit="validateForm() " method="post">
+
+
+  	<h3>Personal details</h3>
+	
+Name of person booking: <input type="text" name="formName"><br>
+
+  	<h3> Film details</h3>
+
+	<p>Film to watch:</p> 
+
+         <select >
+            <option>Select</option>
+            <option value="film1">film1</option>
+			<option value="film2">film2</option>
+            <option value="film3">film3</option>
+			<option value="film4">film4</option>			
+         </select> <br>
+		 
+  	<p>Date and time</p>
+		 
+	<label for="appt-time">Enter time: </label>
+  <input id="appt-time" type="time" name="appt-time" min="08:00" max="23:00" required>
+  <span class="validity"></span><br>
+
+
+
+    <label for="party">Enter date: </label>
+    <input type="date" id="party" name="party" min="2018-01-01" max="2019-01-01" required>
+    <span class="validity"></span><br>
+
+	<h3>Costs</h3>
+	
+	<p>Quickly find out how much it costs for any number of children or adults, or how many adults and children can attend for a given amount. 
+	If you are satisfied you can proceed to paypal.</p>
+	
+      <table id = "computed_props">
+         <tr>
+		 <td>Number of adults: </td> 
+		 <td><input type = "text" v-model = "counterAdult" onkeyup="add()"> </td>
+		 </tr>
+         <tr>
+		 <td>Cost for this many adults: </td>
+		 <td><input type = "text" name="costOfAdults" v-model = "costAdult" onkeyup="add()"> </td>     
+         </tr>
+		 <tr>
+		 <td>Number of children: </td>
+		 <td><input type = "text" v-model = "counterChild" onkeyup="add()"> </td>
+		 </tr>
+		 <tr>
+		 <td>Cost for this many children:</td>
+		 <td><input type = "text" name="costOfChildren" v-model = "costChild" onkeyup="add()"> </td>     
+		 </tr>
+		 <tr>
+		 <td>Total cost: </td>
+		 <td><input type ="text" name ="costOfTotal" v-model = "costTotal"> </td>
+		 </tr>
+
+		 </table>
+	
+	<script>
+	
+	function validateForm() {
+    var nameformat = document.forms["emailto"]["formName"].value;
+
+    if (nameformat == "" ) {
+        alert("Please enter your details fully.");
+        return false;
+    }
+    
+}
+
+	
+	    var vm = new Vue({
+            el: '#computed_props',
+            data: {
+               counterAdult : 0,
+               costAdult: 0,
+               counterChild : 0,
+               costChild: 0,
+			   costTotal: 0
+            },
+            methods: {
+            },
+            computed :{
+            },
+            watch : {
+               counterAdult:function(val) {
+                  this.counterAdult = val;
+                  this.costAdult = (val * 7.99).toFixed(2);
+               },
+               costAdult : function (val) {
+                  this.counterAdult = Math.floor(val/ 7.99) ;
+                  this.costAdult = val;
+               },
+			   
+			   counterChild:function(val) {
+                  this.counterChild = val;
+                  this.costChild = (val * 5.99).toFixed(2);
+               },
+               costChild : function (val) {
+                  this.counterChild = Math.floor(val/ 5.99) ;
+                  this.costChild = val;
+               },
+			   
+            }
+         });
+	
+function add() {
+
+var costAdult=window.document.emailto.costOfAdults.value;
+
+var costChild=window.document.emailto.costOfChildren.value;
+
+var costTotal=parseFloat(costAdult)+parseFloat(costChild);
+
+window.document.emailto.costOfTotal.value=costTotal;
+
+}
+
+function formDataToJSON(formElement) {    
+    var formData = new FormData(formElement),
+        convertedJSON = {};
+
+    formData.forEach(function(value, key) { 
+        convertedJSON[key] = value;
+    });
+
+    return convertedJSON;
+}
+	</script>
+	
+
+<script>var formData = JSON.stringify($("#emailto").serializeArray());</script>
+	
+<input type="submit" name="submit" value="submit">
+
+</form>
+
+
+</div>
+</body>
+</html>
+
+
