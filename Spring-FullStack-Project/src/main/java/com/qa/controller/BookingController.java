@@ -5,6 +5,8 @@ import com.qa.persistence.domain.Booking;
 import com.qa.persistence.domain.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.awt.print.Book;
 import java.util.List;
 
 @RestController
@@ -12,9 +14,9 @@ import java.util.List;
 @ResponseBody
 public class BookingController {
 
-    @Autowired
     private final TransactionService transactionService;
 
+    @Autowired
     public BookingController(TransactionService transactionService) {
         this.transactionService = transactionService;
     }
@@ -31,8 +33,12 @@ public class BookingController {
 
     @RequestMapping(value = "/get-booking/{name}", method = RequestMethod.GET)
     public List<Transaction> findByName(@PathVariable String name) {
-        List<Transaction> existingTransaction = transactionService.findByName(name);
-        return existingTransaction;
+        return transactionService.findByName(name);
+    }
+
+    @RequestMapping(value="/get-booking/{date}", method = RequestMethod.GET)
+    public List<Transaction> getAllBooked(@PathVariable String date){
+        return transactionService.findByDateAndTime(date);
     }
 
     @RequestMapping(value = "/delete-all", method = RequestMethod.DELETE)
