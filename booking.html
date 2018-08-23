@@ -65,18 +65,18 @@
 
   	<h1>Booking</h1>
 
-<form id="test" action="#" method="post">
+<form name="bookto" id="test" action="#" method="post" onSubmit="validateForm()">
 
 
   	<h3>Personal details</h3>
 	
-Name of person booking: <input type="text" name="person_booking"><br>
+Name of person booking: <input type="text" name="name" ><br>
 
   	<h3> Film details</h3>
 
 	<p>Film to watch:</p> 
 
-    	<select id ="selectbox" name="select_film" class="form-control">
+    	<select id ="selectbox" name="booking_movie" class="form-control">
             <option>Select</option>
             <option value="Avengers: Infinity wars">Avengers: Infinity wars</option>
             <option value="Deadpool">Deadpool</option>
@@ -89,7 +89,7 @@ Name of person booking: <input type="text" name="person_booking"><br>
   	<p>Date and time</p>
 		 
 	<label for="bookingTime">Enter time: </label>
-  <input id="bookingTime" type="time" name="booking_time" min="08:00" max="23:00" required>
+  <input id="bookingTime" type="time" name="time" min="08:00" max="23:00" required>
   <span class="validity"></span><br>
 
 
@@ -131,15 +131,13 @@ Name of person booking: <input type="text" name="person_booking"><br>
 		<script>
 	
 	function validateForm() {
-    var nameformat = document.forms["bookto"]["formName"].value;
+    var nameformat = document.bookto.name.value;
 
     if (nameformat == "" ) {
-        alert("Please enter your details fully.");
+        alert("Please enter the name of the person booking.");
         return false;
     }
-    
-}
-
+    }
 	
 	    var vm = new Vue({
             el: '#computed_props',
@@ -157,7 +155,7 @@ Name of person booking: <input type="text" name="person_booking"><br>
             watch : {
                counterAdult:function(val) {
                   this.counterAdult = val;
-                  this.costAdult = (val * 7.99).toFixed(2);
+                  this.costAdult = (val * 7.99);
                },
                costAdult : function (val) {
                   this.counterAdult = Math.floor(val/ 7.99) ;
@@ -166,7 +164,7 @@ Name of person booking: <input type="text" name="person_booking"><br>
 			   
 			   counterChild:function(val) {
                   this.counterChild = val;
-                  this.costChild = (val * 5.99).toFixed(2);
+                  this.costChild = (val * 5.99);
                },
                costChild : function (val) {
                   this.counterChild = Math.floor(val/ 5.99) ;
@@ -176,6 +174,7 @@ Name of person booking: <input type="text" name="person_booking"><br>
             }
          });
 	
+
 function add() {
 
 var costAdult=window.document.bookto.cost_of_adults.value;
@@ -190,20 +189,16 @@ window.document.bookto.total_cost.value=costTotal;
 
 	</script>
 	
-	
-	<input type="submit" name="submit" value="Check JSON">
-	
-	
-	<p>
-        <input type="submit" value="Send" class="btn btn-primary btn-block" />
-    </p>
+		<input type="submit" name="submit" value="Submit">
 
+	
+	
 	</form>
+	
 
-
-<pre id="output"></pre>
-
-
+	<pre id="output"></pre>
+	
 </div>
 </body>
+
 </html>
