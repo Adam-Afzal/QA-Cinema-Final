@@ -14,9 +14,9 @@ import java.util.List;
 @ResponseBody
 public class BookingController {
 
+    @Autowired
     private final TransactionService transactionService;
 
-    @Autowired
     public BookingController(TransactionService transactionService) {
         this.transactionService = transactionService;
     }
@@ -33,13 +33,19 @@ public class BookingController {
 
     @RequestMapping(value = "/get-booking/{name}", method = RequestMethod.GET)
     public List<Transaction> findByName(@PathVariable String name) {
-        return transactionService.findByName(name);
+        List<Transaction> existingTransaction = transactionService.findByName(name);
+        return existingTransaction;
     }
 
-    @RequestMapping(value="/get-booking/{date}", method = RequestMethod.GET)
-    public List<Transaction> getAllBooked(@PathVariable String date){
-        return transactionService.findByDateAndTime(date);
-    }
+
+@RequestMapping(value="/getAllBooked/{date}/{time}", method = RequestMethod.GET)
+public List<Transaction> getAllBooked(@PathVariable String date, @PathVariable String time){
+   List<Transaction> booked = transactionService.findByDateAndTime(date,time);
+
+   return booked;
+
+
+}
 
     @RequestMapping(value = "/delete-all", method = RequestMethod.DELETE)
     public void deleteAll(){

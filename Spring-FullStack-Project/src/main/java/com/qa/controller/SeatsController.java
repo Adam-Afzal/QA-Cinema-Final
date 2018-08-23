@@ -28,20 +28,6 @@ public class SeatsController {
         return iSeatsService.save(seats);
     }
 
-    @RequestMapping(value = "reserve/{id}", method = RequestMethod.PUT)
-    public Seats reserveSeat(@PathVariable Long id){
-        Seats existingSeating = iSeatsService.findById(id).get();
-        existingSeating.setSeat_status("Reserved");
-        return iSeatsService.saveAndFlush(existingSeating);
-    }
-
-    @RequestMapping(value = "unreserve/{id}", method = RequestMethod.PUT)
-    public Seats unreserveSeat(@PathVariable Long id){
-        Seats existingSeat = iSeatsService.findById(id).get();
-        existingSeat.setSeat_status("Available");
-        return iSeatsService.saveAndFlush(existingSeat);
-    }
-
     @RequestMapping(value = "delete-all", method = RequestMethod.DELETE)
     public void deleteAllSeats(){
         iSeatsService.deleteAll();
